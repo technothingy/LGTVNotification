@@ -1,0 +1,33 @@
+var lgtv = require('lgtv');
+var express = require('express');
+var app = express();
+var fs = require("fs");
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() ); // to support JSON-encoded bodies
+
+var retry_timeout = 10;
+
+app.post('/toast', function (req, res) {
+	var msg = req.body.msg;
+
+	lgtv.connect("192.168.2.158", function(err, response){
+		if (!err) {
+			lgtv.show_float(msg, function(err, response){
+				if (!err) {
+					lgtv.disconnect();
+				}
+			}); // show float
+		}
+		else { res.end( "Failed" ) }
+	});
+
+	res.end( "SUCCESS!" );
+})
+
+var server = app.listen(8081, function () {
+
+  var host = server.address().address
+  var port = server.address().port
+  console.log("Example app listening at http://%s:%s", host, port)
+
+})

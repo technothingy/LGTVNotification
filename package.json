@@ -1,0 +1,17 @@
+{
+  "name": "lgrest",
+  "version": "1.0.0",
+  "description": "RESTful LG Interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sean Savage",
+  "license": "ISC",
+  "files": "server.js",
+  "dependencies": {
+    "lgtv": "^0.2.4",
+    "express": "^4.15.4",
+    "body-parser": "^1.17.2"
+  }
+}
